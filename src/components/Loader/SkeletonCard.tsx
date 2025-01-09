@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Skeleton } from '../ui/skeleton'
 import { CarouselItem } from '../ui/carousel'
 
-const LoadingSkeltonCard = () => {
+const SkeltonCard = () => {
     const [width, setWidth] = useState(window.innerWidth);
 
     useEffect(() => {
@@ -17,21 +17,21 @@ const LoadingSkeltonCard = () => {
             window.removeEventListener("resize", changeWidth);
         };
     }, []);
-
     return (
 
-        <CarouselItem>
-            <div className="flex gap-4">
-                {
-                    Array.from({ length: width }).map((_, index) => (
-                        <Skeleton key={index} className='w-48 h-72' />
-                    ))
-                }
+        <>
+            {
+                Array.from({ length: width }).map((_, index) => (
+                    <CarouselItem className='basis-44 md:basis-48' key={index}>
+                        <Skeleton key={index} className='w-40 md:w-44 h-72' />
+                    </CarouselItem>
+                ))
+            }
 
-            </div>
-        </CarouselItem>
+        </>
+
 
     )
 }
 
-export default LoadingSkeltonCard
+export default SkeltonCard

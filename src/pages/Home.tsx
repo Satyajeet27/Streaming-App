@@ -1,15 +1,15 @@
 import CarouselHome from '@/components/carousel/CarouselHome'
-import LatestShows from '@/components/latest movies-tv/LatestShows'
+
+import Movies from '@/components/latest-streams/Movies'
+import TvShows from '@/components/latest-streams/TvShows'
 import { FC } from 'react'
 
 const Home: FC = () => {
-
-
     return (
         <div className=''>
             <CarouselHome />
-            <LatestShows latestTagName='Movies' />
-            <LatestShows latestTagName='Tv' />
+            <Movies />
+            <TvShows />
         </div>
     )
 }

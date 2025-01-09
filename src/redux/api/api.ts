@@ -1,4 +1,9 @@
-import { SingleMovie, TrendingAll } from "@/types/types";
+import {
+  MovieDetails,
+  SingleMovieDetails,
+  StreamResults,
+  TVShowDetails,
+} from "@/types/types";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const url = import.meta.env.VITE_TMDB_BASE_URL;
@@ -15,25 +20,29 @@ export const streamingApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    trendingAll: builder.query<TrendingAll, string>({
+    trendingAll: builder.query<StreamResults, string>({
       query: () => "trending/all/day",
     }),
-    latestMovies: builder.query<TrendingAll, string>({
-      query: (name: "Movies" | "Tv") => {
-        if (name === "Movies") {
-          return "movie/now_playing?language=en-US&page=1";
-        } else {
-          return "tv/on_the_air";
-        }
-      },
+    getlatestMovies: builder.query<StreamResults, string>({
+      query: () => "movie/now_playing?language=en-US&page=1",
     }),
-    getMoviesById: builder.query<SingleMovie, string>({
-      query: (id: string) => `movie/${id}`,
+    getlatestTvShows: builder.query<StreamResults, string>({
+      query: () => "tv/on_the_air",
     }),
-    getSimilarMovies: builder.query<TrendingAll, number>({
+
+    getMovieById: builder.query<SingleMovieDetails, number>({
+      query: (id: number) => `movie/${id}`,
+    }),
+    getTvSeriesById: builder.query<TVShowDetails, number>({
+      query: (id: number) => `tv/${id}`,
+    }),
+    getMovieCreditsById: builder.query<MovieDetails, number>({
+      query: (id: number) => `movie/${id}/credits`,
+    }),
+    getSimilarMovies: builder.query<StreamResults, number>({
       query: (id: number) => `movie/${id}/similar`,
     }),
-    getSimilarTvShows: builder.query<TrendingAll, number>({
+    getSimilarTvShows: builder.query<StreamResults, number>({
       query: (id: number) => `tv/${id}/similar`,
     }),
   }),
@@ -41,7 +50,11 @@ export const streamingApi = createApi({
 
 export const {
   useTrendingAllQuery,
-  useLatestMoviesQuery,
-  useGetMoviesByIdQuery,
+  useGetlatestMoviesQuery,
+  useGetlatestTvShowsQuery,
+  useGetMovieByIdQuery,
   useGetSimilarMoviesQuery,
+  useGetMovieCreditsByIdQuery,
+  useGetTvSeriesByIdQuery,
+  useGetSimilarTvShowsQuery,
 } = streamingApi;
