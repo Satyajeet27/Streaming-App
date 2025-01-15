@@ -7,7 +7,7 @@ const PopularTvShows = () => {
     return (
         <div className='container  mx-auto my-6 px-4'>
             <h2 className='heading'>Popular Tv Shows</h2>
-            <CarouselStreamList data={data} isLoading={isLoading} streamType='Movies' />
+            <CarouselStreamList data={data} isLoading={isLoading} streamType='tv' />
         </div>
     )
 }

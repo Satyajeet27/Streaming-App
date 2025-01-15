@@ -1,7 +1,6 @@
 import BackgroundImage from '@/components/bgImage/BackgroundImage'
 import { SkeletonCarouselLoader } from '@/components/Loader/Skeleton'
 import SimilarMovies from '@/components/streams/similar/SimilarMovies'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Separator } from '@/components/ui/separator'
 import { useGetMovieByIdQuery, useGetMovieCreditsByIdQuery } from '@/redux/api/api'
 import { Person } from '@/types/types'
