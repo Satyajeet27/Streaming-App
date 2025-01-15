@@ -24,7 +24,7 @@ const MovieDetail = () => {
     const date = new Date(data?.release_date).toLocaleDateString("en-us", { month: "short", day: "numeric", year: "numeric" })
     const director: Person = movieCreditData?.crew.find((i: Person) => i.department === "Directing") as Person
     const writer: Person = movieCreditData?.crew.find((i: Person) => i.department === "Writing") as Person
-    const streamUrl = `https://vidsrc.in/embed/movie?tmdb=${id}/`
+    const streamUrl = `https://vidsrc.me/embed/movie?tmdb=${id}/`
     return (
         <div className="">
 
