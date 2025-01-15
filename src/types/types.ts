@@ -175,3 +175,14 @@ export type TVShowDetails = {
   vote_average: number;
   vote_count: number;
 };
+
+export type MovieGenreList = {
+  genres: Array<{
+    id: number;
+    name: string;
+  }>;
+};
+export type Genre = { id: number; name: string };
+export type GenreList = {
+  genres: Genre[];
+};

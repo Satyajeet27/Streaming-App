@@ -1,20 +1,24 @@
 import React from 'react'
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../ui/carousel'
-import { useTrendingAllQuery } from '@/redux/api/api'
 import Autoplay from 'embla-carousel-autoplay'
-import { Separator } from '../ui/separator'
 import { SkeletonCarouselLoader } from '../Loader/Skeleton'
 import BackgroundImage from '../bgImage/BackgroundImage'
+import { StreamResults } from '@/types/types'
+import GenreComponent from '../genre/GenreComponent'
+import { Button } from '../ui/button'
+import { Info } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 
 const baseUrl = import.meta.env.VITE_TMDB_IMAGE_URL
 
-const CarouselHome = () => {
-  const { data, isLoading } = useTrendingAllQuery("")
-
+const CarouselHome = ({ data, isLoading }: { isLoading: boolean; data: StreamResults }) => {
+  const navigate = useNavigate()
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true }))
-
+    Autoplay({ delay: 1000, stopOnInteraction: true }))
+  const handleNavigate = (id: number, media_type: "movie" | "tv") => {
+    navigate(media_type === "movie" ? `/movie/${id}` : `/tv/${id}`)
+  }
   return (
     <>
       {
@@ -48,13 +52,15 @@ const CarouselHome = () => {
 
                         >
                           <p className='text-3xl font-semibold md:text-4xl line-clamp-2'>{result.name || result.title}</p>
-                          <p className='text-sm font-light line-clamp-4'>{result.overview}</p>
-                          <p className='flex h-4 gap-2 font-light text-sm'>
-                            <span>Rating: {result.vote_average.toFixed(1)}</span>
-                            <Separator orientation='vertical' />
-                            <span>View: {result.vote_count}</span>
-                          </p>
 
+                          <p className='text-sm font-extralight line-clamp-4'>{result.overview}</p>
+                          <GenreComponent position='start' genre_ids={result.genre_ids} />
+                          <p className='flex h-4 gap-2 font-extralight text-sm'>
+                            <span>Rating: {result.vote_average.toFixed(1)}</span>
+
+                            {/* <span>View: {result.vote_count}</span> */}
+                          </p>
+                          <Button size={"sm"} onClick={() => handleNavigate(result.id, result.media_type,)} variant={'secondary'}>More Info...<Info /></Button>
                         </div>
                       </div>
 

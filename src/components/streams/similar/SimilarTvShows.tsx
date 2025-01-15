@@ -1,17 +1,13 @@
-import { useGetlatestTvShowsQuery } from '@/redux/api/api'
-import CarouselStreamList from '../carousel/CarouselStreamList'
-import { useNavigate } from 'react-router-dom'
-import { Button } from '../ui/button'
+import { useGetSimilarTvShowsQuery } from '@/redux/api/api'
+import { useParams } from 'react-router-dom'
+import CarouselStreamList from '../../carousel/CarouselStreamList'
 
 const TvShows = () => {
-    const { data, isLoading } = useGetlatestTvShowsQuery("")
-    const navigate = useNavigate()
+    const { id } = useParams()
+    const { data, isLoading } = useGetSimilarTvShowsQuery(Number(id))
     return (
         <div className='container  mx-auto my-6 px-4'>
-            <div className="flex justify-between items-center my-4">
-                <h2 className='heading'>Latest TV Shows</h2>
-                <Button onClick={() => navigate("/tv/latest")} variant={"destructive"}>More...</Button>
-            </div>
+            <h2 className='heading'>Similar TV Shows</h2>
             {/* <Carousel >
                 <CarouselContent className=''>
                     {isLoading ? <SkeltonCard /> :

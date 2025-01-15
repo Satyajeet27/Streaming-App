@@ -1,18 +1,15 @@
-
 import { useGetlatestMoviesQuery } from '@/redux/api/api'
+import CarouselStreamList from '../../carousel/CarouselStreamList'
 
-import CarouselStreamList from '../carousel/CarouselStreamList'
-import { Button } from '../ui/button'
-import { useNavigate } from 'react-router-dom'
 
-const Movies = () => {
+const LatestMovies = () => {
     const { data, isLoading } = useGetlatestMoviesQuery("")
-    const navigate = useNavigate()
+
     return (
         <div className='container  mx-auto my-6 px-4'>
-            <div className="flex justify-between items-center my-4">
+            <div className="flex justify-between items-center my-2">
                 <h2 className='heading'>Latest Movies</h2>
-                <Button onClick={() => navigate("/movies/latest")} variant={"destructive"}>More...</Button>
+                {/* <Button variant={"destructive"}>More...</Button> */}
             </div>
             {/* <Carousel >
                 <CarouselContent className=''>
@@ -38,9 +35,9 @@ const Movies = () => {
                 }
 
             </Carousel> */}
-            <CarouselStreamList data={data} isLoading={isLoading} streamType='Movies' />
+            <CarouselStreamList streamType='movie' data={data} isLoading={isLoading} />
         </div>
     )
 }
 
-export default Movies
+export default LatestMovies

@@ -1,20 +1,19 @@
 import CarouselHome from '@/components/carousel/CarouselHome'
-
-import LatestMovies from '@/components/streams/latest/LatestMovies'
 import LatestTvShows from '@/components/streams/latest/LatestTvShows'
-import { useTrendingAllQuery } from '@/redux/api/api'
+import PopularTvShows from '@/components/streams/popular/PopularTvShows'
+import { useGetTrendingTvShowsQuery } from '@/redux/api/api'
 import { StreamResults } from '@/types/types'
-import { FC } from 'react'
 
-const Home: FC = () => {
-    const { data, isLoading } = useTrendingAllQuery("")
+
+const TvShows = () => {
+    const { data, isLoading } = useGetTrendingTvShowsQuery("")
     return (
-        <div className=''>
+        <div>
             <CarouselHome data={data as StreamResults} isLoading={isLoading} />
-            <LatestMovies />
             <LatestTvShows />
+            <PopularTvShows />
         </div>
     )
 }
 
-export default Home
+export default TvShows

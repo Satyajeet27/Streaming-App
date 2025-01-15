@@ -1,6 +1,6 @@
 import BackgroundImage from '@/components/bgImage/BackgroundImage'
 import { SkeletonCarouselLoader } from '@/components/Loader/Skeleton'
-import SimilarMovies from '@/components/similar/Movies'
+import SimilarMovies from '@/components/streams/similar/SimilarMovies'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Separator } from '@/components/ui/separator'
 import { useGetMovieByIdQuery, useGetMovieCreditsByIdQuery } from '@/redux/api/api'
@@ -25,7 +25,7 @@ const MovieDetail = () => {
     const date = new Date(data?.release_date).toLocaleDateString("en-us", { month: "short", day: "numeric", year: "numeric" })
     const director: Person = movieCreditData?.crew.find((i: Person) => i.department === "Directing") as Person
     const writer: Person = movieCreditData?.crew.find((i: Person) => i.department === "Writing") as Person
-
+    const streamUrl = `https://vidsrc.in/embed/movie?tmdb=${id}/`
     return (
         <div className="">
 
@@ -34,15 +34,15 @@ const MovieDetail = () => {
                     <img className='-z-20 absolute w-full h-screen   object-cover md:object-fill' src={bgImage} alt="" />
                     <div className="-z-10 absolute h-screen w-full bg-gradient-to-t from-black to-transparent"></div>
                 </div> */}
-                <div className="">
 
-                </div>
                 <BackgroundImage image={bgImage} />
-                <div className="container mx-auto p-10 text-slate-200">
+                <div className="container mx-auto py-4 md:p-10 text-slate-200">
 
                     <div className="flex flex-col md:flex-row items-center md:items-start mt-20 md:mt-40">
-                        <div className="md:basis-1/4  ">
-                            <img src={image} className='h-72 border-2 border-white w-fit shadow-white shadow-sm' alt="" />
+                        <div className="md:basis-1/4">
+                            <img src={image} className='h-72 w-full border-2 border-white  shadow-white shadow-sm' alt="" />
+
+
                         </div>
                         <div className="md:basis-3/4 p-10 space-y-4 leading-tight text-slate-300">
                             <div className="">
@@ -75,7 +75,7 @@ const MovieDetail = () => {
                             <div className="text-xs ">
                                 <span>Writer : {writer.name}</span>
                             </div>
-                            <div className="text-sm">
+                            {/* <div className="text-sm">
                                 <p>Cast:</p>
                                 <div className="flex flex-wrap gap-4 md:gap-6 my-2">
                                     {
@@ -90,10 +90,13 @@ const MovieDetail = () => {
                                         ))
                                     }
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="container mx-auto">
+                <iframe className='w-full h-screen' src={streamUrl} referrerPolicy='origin' allowfullscreen ></iframe>
             </div>
             <SimilarMovies />
         </div>

@@ -1,6 +1,6 @@
 import BackgroundImage from '@/components/bgImage/BackgroundImage'
 import { SkeletonCarouselLoader } from '@/components/Loader/Skeleton'
-import TvShows from '@/components/similar/TvShows'
+import TvShows from '@/components/streams/similar/SimilarTvShows'
 
 import { Separator } from '@/components/ui/separator'
 import { useGetTvSeriesByIdQuery } from '@/redux/api/api'
@@ -23,7 +23,6 @@ const TvSeriesDetail = () => {
 
     // const date = new Date(data?.release_date).toLocaleDateString("en-us", { month: "short", day: "numeric", year: "numeric" })
 
-    console.log(data)
     return (
         <div className="">
             <div className=''>

@@ -3,10 +3,11 @@ import { StreamResults } from '@/types/types'
 import MovieTvShowCard from '../Card/MovieTVShowCard'
 import SkeltonCard from '../Loader/SkeletonCard'
 
+
 type Props = {
     data: StreamResults | undefined
-    streamType: "Tv" | "Movies";
     isLoading: boolean;
+    streamType: "tv" | "movie"
 }
 
 const CarouselStreamList = ({ data, isLoading, streamType }: Props) => {
@@ -16,7 +17,7 @@ const CarouselStreamList = ({ data, isLoading, streamType }: Props) => {
                 {isLoading ? <SkeltonCard /> :
                     data?.results && data.results.slice(0, 10).map((result, index: number) => (
                         <CarouselItem key={index} className={`basis-48`}>
-                            <MovieTvShowCard streamType={streamType} id={result.id} poster_path={result.poster_path} release_date={result.release_date as string || result.first_air_date as string} title={result.title as string || result.name as string} vote_average={result.vote_average} />
+                            <MovieTvShowCard genre_ids={result.genre_ids} streamType={streamType} id={result.id} poster_path={result.poster_path} release_date={result.release_date as string || result.first_air_date as string} title={result.title as string || result.name as string} vote_average={result.vote_average} />
                         </CarouselItem>
                     ))
                 }

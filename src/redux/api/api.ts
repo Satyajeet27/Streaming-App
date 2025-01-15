@@ -1,5 +1,7 @@
 import {
+  GenreList,
   MovieDetails,
+  MovieGenreList,
   SingleMovieDetails,
   StreamResults,
   TVShowDetails,
@@ -23,11 +25,27 @@ export const streamingApi = createApi({
     trendingAll: builder.query<StreamResults, string>({
       query: () => "trending/all/day",
     }),
+    getTrendingMovies: builder.query<StreamResults, string>({
+      query: () => "trending/movie/day?language=en-US",
+    }),
+    getPopularMovies: builder.query<StreamResults, string>({
+      query: () => "movie/top_rated",
+    }),
+    getUpcomingMovies: builder.query<StreamResults, string>({
+      query: () => "movie/upcoming",
+    }),
+
     getlatestMovies: builder.query<StreamResults, string>({
-      query: () => "movie/now_playing?language=en-US&page=1",
+      query: () => "movie/now_playing",
     }),
     getlatestTvShows: builder.query<StreamResults, string>({
       query: () => "tv/on_the_air",
+    }),
+    getTrendingTvShows: builder.query<StreamResults, string>({
+      query: () => "trending/tv/day",
+    }),
+    getPopularTvShows: builder.query<StreamResults, string>({
+      query: () => "tv/top_rated",
     }),
 
     getMovieById: builder.query<SingleMovieDetails, number>({
@@ -45,6 +63,19 @@ export const streamingApi = createApi({
     getSimilarTvShows: builder.query<StreamResults, number>({
       query: (id: number) => `tv/${id}/similar`,
     }),
+    getMovieGenreList: builder.query<MovieGenreList, string>({
+      query: () => `genre/movie/list`,
+    }),
+    getMoviesandTvShowsBySearch: builder.query<StreamResults, string>({
+      query: (name: string) =>
+        `search/multi?query=${name}&include_adult=true&language=en-US&media_type=&page=1`,
+    }),
+    getMovieGenre: builder.query<GenreList, string>({
+      query: () => "genre/movie/list",
+    }),
+    getTvShowGenre: builder.query<GenreList, string>({
+      query: () => "genre/tv/list",
+    }),
   }),
 });
 
@@ -57,4 +88,13 @@ export const {
   useGetMovieCreditsByIdQuery,
   useGetTvSeriesByIdQuery,
   useGetSimilarTvShowsQuery,
+  useGetMovieGenreListQuery,
+  useGetTrendingMoviesQuery,
+  useGetPopularMoviesQuery,
+  useGetUpcomingMoviesQuery,
+  useGetTrendingTvShowsQuery,
+  useGetPopularTvShowsQuery,
+  useGetMoviesandTvShowsBySearchQuery,
+  useGetMovieGenreQuery,
+  useGetTvShowGenreQuery,
 } = streamingApi;

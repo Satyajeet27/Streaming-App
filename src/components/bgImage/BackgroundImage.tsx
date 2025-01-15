@@ -3,7 +3,7 @@ const BackgroundImage = ({ image = baseImgUrl }: { image: string }) => {
     return (
         <div className="">
             <img className='-z-20 top-0 left-0 absolute w-full h-screen object-cover' src={image} alt="" />
-            <div className="-z-10 absolute top-0 left-0  h-screen w-full bg-gradient-to-t from-black to-transparent"></div>
+            <div className="-z-10 absolute top-0 left-0  h-screen w-full bg-gradient-to-t from-black via-black/80 to-transparent"></div>
         </div>
     )
 }
