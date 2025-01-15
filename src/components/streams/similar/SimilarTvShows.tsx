@@ -32,7 +32,7 @@ const TvShows = () => {
                 }
 
             </Carousel> */}
-            <CarouselStreamList data={data} isLoading={isLoading} streamType='Tv' />
+            <CarouselStreamList data={data} isLoading={isLoading} streamType='tv' />
         </div>
     )
 }

@@ -1,7 +1,6 @@
 import CarouselStreamList from '@/components/carousel/CarouselStreamList';
 import { useGetMoviesandTvShowsBySearchQuery } from '@/redux/api/api';
 import { Result, StreamResults } from '@/types/types';
-import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 type Props = {
@@ -38,11 +37,11 @@ const Search = () => {
                     <p className="text-gray-300 mt-2">Showing results for: <strong>{query}</strong></p>
                     <div className="my-2">
                         <div className="heading">Movies</div>
-                        <CarouselStreamList data={streamList.movieLists as StreamResults} isLoading={isLoading} streamType='Movies' />
+                        <CarouselStreamList data={streamList.movieLists as StreamResults} isLoading={isLoading} streamType='movie' />
                     </div>
                     <div className="">
                         <div className="heading">Tv Shows</div>
-                        <CarouselStreamList data={streamList.tvShowList as StreamResults} isLoading={isLoading} streamType='Tv' />
+                        <CarouselStreamList data={streamList.tvShowList as StreamResults} isLoading={isLoading} streamType='tv' />
                     </div>
                 </div>
             ) : (

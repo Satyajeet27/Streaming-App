@@ -13,7 +13,7 @@ const LatestMovies = () => {
                 <h2 className='heading  mt-20'>Latest Movies</h2>
                 <div className='flex flex-wrap gap-10 '>
                     {
-                        data.results.map((result, index) => <MovieTvShowCard key={index} id={result.id} poster_path={result.poster_path} release_date={result.release_date as string} streamType='Movies' title={result.title as string} vote_average={result.vote_average} />)
+                        data.results.map((result, index) => <MovieTvShowCard key={index} id={result.id} poster_path={result.poster_path} release_date={result.release_date as string} streamType='movie' title={result.title as string} vote_average={result.vote_average} genre_ids={result.genre_ids} />)
                     }
                 </div>
             </div>

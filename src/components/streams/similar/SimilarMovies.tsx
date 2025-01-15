@@ -32,7 +32,7 @@ const SimilarMovies = () => {
                 }
 
             </Carousel> */}
-            <CarouselStreamList data={data} isLoading={isLoading} streamType='Movies' />
+            <CarouselStreamList data={data} isLoading={isLoading} streamType='movie' />
         </div>
     )
 }
