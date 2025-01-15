@@ -24,7 +24,8 @@ const MovieDetail = () => {
     const date = new Date(data?.release_date).toLocaleDateString("en-us", { month: "short", day: "numeric", year: "numeric" })
     const director: Person = movieCreditData?.crew.find((i: Person) => i.department === "Directing") as Person
     const writer: Person = movieCreditData?.crew.find((i: Person) => i.department === "Writing") as Person
-    const streamUrl = `https://vidsrc.me/embed/movie?tmdb=${id}/`
+    const streamUrl = `https://vidsrc.me/embed/movie?tmdb=${id}`
+    console.log(streamUrl)
     return (
         <div className="">
 
@@ -95,12 +96,13 @@ const MovieDetail = () => {
                 </div>
             </div>
             <div className="container mx-auto">
-                <iframe
+                {/* <iframe
                     className="w-full h-screen"
                     src={streamUrl}
                     referrerPolicy="origin"
                     allowFullScreen
-                ></iframe>
+                ></iframe> */}
+                <iframe src={streamUrl} className="w-full h-[80vh]" referrerPolicy="origin" allowFullScreen></iframe>
 
             </div>
             <SimilarMovies />
