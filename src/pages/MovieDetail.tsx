@@ -95,7 +95,13 @@ const MovieDetail = () => {
                 </div>
             </div>
             <div className="container mx-auto">
-                <iframe className='w-full h-screen' src={streamUrl} referrerPolicy='origin' allowfullscreen ></iframe>
+                <iframe
+                    className="w-full h-screen"
+                    src={streamUrl}
+                    referrerPolicy="origin"
+                    allowFullScreen
+                ></iframe>
+
             </div>
             <SimilarMovies />
         </div>
