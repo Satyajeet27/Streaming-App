@@ -1,5 +1,5 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '../ui/carousel'
-import { StreamResults } from '@/types/types'
+import { Result, StreamResults } from '@/types/types'
 import MovieTvShowCard from '../Card/MovieTVShowCard'
 import SkeltonCard from '../Loader/SkeletonCard'
 
@@ -23,7 +23,7 @@ const CarouselStreamList = ({ data, isLoading, streamType }: Props) => {
                 }
             </CarouselContent>
             {
-                !isLoading && (
+                !isLoading && ((data?.results as Result[]).length > 2) && (
                     <>
                         <CarouselPrevious
                             className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-lg cursor-pointer hover:scale-110 transition-all"

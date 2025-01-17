@@ -27,7 +27,7 @@ const SearchInput = ({ isFocused, setIsFocused }: Props) => {
     }
 
     return (
-        <div className="hidden md:flex items-center">
+        <div className="flex items-center">
             <form onSubmit={handleSearch}
                 className={`flex items-center border-2 rounded-full px-3 py-2 transition-all duration-300 h-10 ${isFocused ? 'shadow-lg border-blue-500 w-64' : 'border-gray-600 w-52'
                     }`}

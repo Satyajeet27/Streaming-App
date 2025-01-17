@@ -16,28 +16,29 @@ const GenreComponent = ({ genre_ids, textSize = "sm", position = "center" }: Pro
 
     if (movie && tv) {
         genreList = [...movie.genres, ...tv.genres]
+        genreList.forEach(genre => {
+            if (genre_ids?.includes(genre.id)) {
+                if (genres.every(genresA => genresA.id !== genre.id)) {
+
+                    genres.push(genre)
+                }
+
+            }
+        })
     }
 
-    genreList.forEach(genre => {
-        if (genre_ids.includes(genre.id)) {
-            if (genres.every(genresA => genresA.id !== genre.id)) {
 
-                genres.push(genre)
-            }
-
-        }
-    })
     return (
         <div className={`flex space-x-1 justify-${position} items-center flex-wrap leading-tight font-extralight`}>
             {
                 genres.map((genre, index) => (
-                    <>
+                    <div key={index}>
                         <span className={`text-${textSize}`} key={genre.id}>{genre.name}</span>
                         {
                             genres.length - 1 > index && <span className='text-xs' >|</span>
                         }
 
-                    </>
+                    </div>
                 ))
             }
         </div>

@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import SearchInput from "../search/SearchInput";
+import { useState } from "react";
 
 const Footer = () => {
+    const [isFocused, setIsFocused] = useState(false);
     return (
         <footer className="bg-black text-white py-10 px-6">
             <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
@@ -11,10 +14,12 @@ const Footer = () => {
                         Your ultimate destination for movies, shows, and entertainment.
                     </p>
                 </div>
-
+                <div className="md:hidden">
+                    <SearchInput isFocused={isFocused} setIsFocused={setIsFocused} />
+                </div>
                 {/* Navigation Links */}
                 <div className="flex gap-6">
-                    <ul className="text-sm flex flex-col md:flex-row gap-4">
+                    <ul className="text-sm flex items-center flex-col md:flex-row gap-4">
                         <li>
                             <Link to="/about" className="hover:text-gray-300">
                                 About Us

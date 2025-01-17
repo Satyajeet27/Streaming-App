@@ -56,7 +56,7 @@ const CarouselHome = ({ data, isLoading }: { isLoading: boolean; data: StreamRes
                           <p className='text-sm font-extralight line-clamp-4'>{result.overview}</p>
                           <GenreComponent position='start' genre_ids={result.genre_ids} />
                           <p className='flex h-4 gap-2 font-extralight text-sm'>
-                            <span>Rating: {result.vote_average.toFixed(1)}</span>
+                            <span>Rating: {result.vote_average?.toFixed(1)}</span>
 
                             {/* <span>View: {result.vote_count}</span> */}
                           </p>

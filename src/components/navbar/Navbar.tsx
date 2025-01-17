@@ -61,7 +61,9 @@ const Navbar: FC = () => {
                         <Search size={20} className="text-gray-400 ml-2" />
                     </div>
                 </div> */}
-                <SearchInput setIsFocused={setIsFocused} isFocused={isFocused} />
+                <div className="hidden md:block">
+                    <SearchInput setIsFocused={setIsFocused} isFocused={isFocused} />
+                </div>
                 {/* Mobile Navigation */}
                 <div className="md:hidden">
                     <MobNav />
